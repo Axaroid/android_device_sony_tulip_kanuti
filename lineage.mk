@@ -13,8 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#TODO Add this file.
-#$(call inherit-product, device/sony/tulip/full_tulip.mk)
+#TODO done.
+$(call inherit-product, device/sony/tulip/full_tulip.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 720
