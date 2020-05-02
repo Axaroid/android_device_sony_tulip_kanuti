@@ -1,0 +1,3 @@
+add_lunch_combo lineage_sony_tulip-userdebug
+add_lunch_combo lineage_sony_tulip-user
+add_lunch_combo lineage_sony_tulip-eng
