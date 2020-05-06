@@ -14,31 +14,56 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from msm8916-common
-$(call inherit-product, device/motorola/msm8916-common/msm8916.mk)
+# TODO are for highlighting only
 
-# Screen density
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+# TODO Defined Paths
+LOCAL_PATH := device/sony/tulip
+DEVICE_PATH := device/sony/tulip/rootdir
+DEVICE_PACKAGE_OVERLAYS += \
+    device/sony/tulip/overlay
+
+# Inherit from msm8916-common
+#TODO motorola to sony
+$(call inherit-product, device/sony/msm8916-common/msm8916.mk)
+
+# SAR
+# TODO Completely Edited from aospt tree
+PRODUCT_PACKAGES += \
+    TransPowerSensors
+
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREBUILT_DPI := xhdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.sf.lcd_density=320 \
+    ro.usb.pid_suffix=1C4
 
 # Dalvik
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+# Edited TODO from xxhdpi to xhdpi
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # Audio
+# TODO EDITED Mixer_paths.xml file
+# TODO Change audio_policy.conf if possible
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 
 # Camera
+# TODO No changes done
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml
 
 # Media
+# TODO No changes done
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
 # NFC
+# TODO No changes done
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
@@ -59,14 +84,17 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+# TODO ADD THIS FILE
+#DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Ramdisk
+# TODO NO IDEA
 PRODUCT_PACKAGES += \
     init.device.config.sh \
     init.target.rc
 
 # Sensors
+# TODO No changes done
 PRODUCT_PACKAGES += \
     akmd09912 \
     stml0xx \
@@ -74,5 +102,6 @@ PRODUCT_PACKAGES += \
     sensorhub.msm8916
 
 # Thermal
+# TODO Changed Files
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/thermal-engine-lux.conf:system/etc/thermal-engine-lux.conf
+    $(DEVICE_PATH)/vendor/etc/thermanager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/thermanager.xml
