@@ -84,8 +84,8 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras
 
 # Overlay
-# TODO ADD THIS FILE
-#DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+# TODO Done.
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Ramdisk
 # TODO NO IDEA
