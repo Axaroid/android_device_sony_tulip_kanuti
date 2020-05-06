@@ -14,6 +14,7 @@
 # limitations under the License.
 
 include device/sony/msm8916-common/BoardConfigCommon.mk
+include device/sony/tulip/PlatformConfig.mk
 
 # TODO WTF
 #-include vendor/motorola/lux/BoardConfigVendor.mk
@@ -27,7 +28,7 @@ TARGET_OTA_ASSERT_DEVICE := tulip
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Kernel
-TARGET_KERNEL_CONFIG := lux_defconfig
+TARGET_KERNEL_CONFIG := tulip_defconfig
 
 # Partitions
 # TODO EDITED
